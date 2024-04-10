@@ -194,10 +194,6 @@ func validateConfig() {
 		return
 	}
 
-	if getTCPAddr("web.base-address").IP.IsUnspecified() {
-		log.Panicln("base URL is set to 0.0.0.0, this will not work. please use the --web.baseaddress option and set it to the (local) ip address telly is running on.")
-	}
-
 	if getTCPAddr("web.listenaddress").IP.IsUnspecified() && getTCPAddr("web.base-address").IP.IsLoopback() {
 		log.Warnln("You are listening on all interfaces but your base URL is localhost (meaning Plex will try and load localhost to access your streams) - is this intended?")
 	}
